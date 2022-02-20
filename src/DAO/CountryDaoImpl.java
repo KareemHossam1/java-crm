@@ -32,7 +32,7 @@ public class CountryDaoImpl extends GeneralDaoImpl {
         ResultSet rs = ps.getResultSet();
         
         while(rs.next()){
-            String country = rs.getString("country");
+            String country = rs.getString("countryName");
             getMetadata(rs);
             countryResult = new Country(countryId, country, createDateLdt, createdBy, lastUpdateLdt, lastUpdateBy);
             return countryResult;
@@ -46,7 +46,7 @@ public class CountryDaoImpl extends GeneralDaoImpl {
     public static Country getCountry(String countryName) throws SQLException {
         
         Country countryResult;
-        String sqlStatement = "select * FROM country WHERE lower(country) = lower(?)";
+        String sqlStatement = "select * FROM country WHERE lower(countryName) = lower(?)";
         PreparedStatement ps = setPreparedStatement(sqlStatement);
         ps.setString(1, countryName);
         ps.execute();
@@ -54,7 +54,7 @@ public class CountryDaoImpl extends GeneralDaoImpl {
         
         while(rs.next()){
             int countryId = rs.getInt("countryId");
-            String country = rs.getString("country");
+            String country = rs.getString("countryName");
             getMetadata(rs);
             countryResult = new Country(countryId, country, createDateLdt, createdBy, lastUpdateLdt, lastUpdateBy);
             return countryResult;
@@ -68,7 +68,7 @@ public class CountryDaoImpl extends GeneralDaoImpl {
     // Insert country into DB
     public static Country insertCountry(String countryName) throws SQLException {
         
-        String createStatement = "INSERT INTO country (country,createDate,createdBy,lastUpdate,lastUpdateBy) VALUES(?,?,?,?,?)";
+        String createStatement = "INSERT INTO country (countryName,createDate,createdBy,lastUpdate,lastUpdateBy) VALUES(?,?,?,?,?)";
         PreparedStatement ps = setPreparedStatement(createStatement);
         
         String userName = getCurrentUser().getUserName();

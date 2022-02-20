@@ -32,7 +32,7 @@ public class CityDaoImpl extends GeneralDaoImpl{
         ResultSet rs = ps.getResultSet();
         
         while(rs.next()){
-            String city = rs.getString("city");
+            String city = rs.getString("cityName");
             int countryId = rs.getInt("countryId");
             getMetadata(rs);
             
@@ -46,7 +46,7 @@ public class CityDaoImpl extends GeneralDaoImpl{
     public static City getCity(String cityName, int countryId) throws SQLException {
         
         City cityResult;
-        String sqlStatement = "select * FROM city WHERE LOWER(city) = LOWER(?) AND countryId = ?";
+        String sqlStatement = "select * FROM city WHERE LOWER(cityName) = LOWER(?) AND countryId = ?";
         PreparedStatement ps = setPreparedStatement(sqlStatement);
         ps.setString(1, cityName);
         ps.setInt(2, countryId);
@@ -55,7 +55,7 @@ public class CityDaoImpl extends GeneralDaoImpl{
         
         while(rs.next()){
             int cityId = rs.getInt("cityId");
-            String city = rs.getString("city");
+            String city = rs.getString("cityName");
             getMetadata(rs);
             cityResult = new City(cityId, city, countryId, createDateLdt, createdBy, lastUpdateLdt, lastUpdateBy);
             return cityResult;
@@ -69,7 +69,7 @@ public class CityDaoImpl extends GeneralDaoImpl{
     // Insert city into DB
     public static City insertCity(String cityName, int countryId) throws SQLException {
         
-        String createStatement = "INSERT INTO city (city, countryId, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES(?,?,?,?,?,?)";
+        String createStatement = "INSERT INTO city (cityName, countryId, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES(?,?,?,?,?,?)";
         PreparedStatement ps = setPreparedStatement(createStatement);
         
         String userName = getCurrentUser().getUserName();

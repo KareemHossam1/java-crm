@@ -32,8 +32,8 @@ public class AddressDaoImpl extends GeneralDaoImpl {
         ResultSet rs = ps.getResultSet();
         
         while(rs.next()){
-            String address = rs.getString("address");
-            String address2 = rs.getString("address2");
+            String address = rs.getString("addressName");
+            String address2 = rs.getString("address2Name");
             int cityId = rs.getInt("cityId");
             String postalCode = rs.getString("postalCode");
             String phone = rs.getString("phone");
@@ -49,7 +49,7 @@ public class AddressDaoImpl extends GeneralDaoImpl {
     public static Address getAddress(String address, String address2, int cityId, String postalCode, String phone) throws SQLException  {
         
         Address addressResult;
-        String sqlStatement = "SELECT * FROM address WHERE LOWER(address) = LOWER(?) AND LOWER(address2) = LOWER(?) AND cityId = ? AND postalCode = ? AND phone = ?";
+        String sqlStatement = "SELECT * FROM address WHERE LOWER(addressName) = LOWER(?) AND LOWER(address2Name) = LOWER(?) AND cityId = ? AND postalCode = ? AND phone = ?";
         PreparedStatement ps = setPreparedStatement(sqlStatement);
         ps.setString(1, address);
         ps.setString(2, address2);
@@ -74,7 +74,7 @@ public class AddressDaoImpl extends GeneralDaoImpl {
     // Insert address into DB
     public static Address insertAddress(String address, String address2, int cityId, String postalCode, String phone) throws SQLException {
         
-        String createStatement = "INSERT INTO address (address, address2, cityId, postalCode, phone, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES(?,?,?,?,?,?,?,?,?)";
+        String createStatement = "INSERT INTO address (addressName, address2Name, cityId, postalCode, phone, createDate, createdBy, lastUpdate, lastUpdateBy) VALUES(?,?,?,?,?,?,?,?,?)";
         PreparedStatement ps = setPreparedStatement(createStatement);
         
         String userName = getCurrentUser().getUserName();
