@@ -21,7 +21,7 @@ import javafx.collections.ObservableList;
  */
 public class TimeFiles {
     
-    private static final DateTimeFormatter DBDATETIMEFORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
+    private static final DateTimeFormatter DBDATETIMEFORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private static final DateTimeFormatter UITIMEFORMAT = DateTimeFormatter.ofPattern("h:mm a");
     private static final DateTimeFormatter UIDATEFORMAT = DateTimeFormatter.ofPattern("M/d/yyyy");
     
