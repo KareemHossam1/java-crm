@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" styleClass="border-pane" stylesheets="@../Resources/generalStylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ViewCustomerScreenController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" styleClass="border-pane" stylesheets="@../Resources/generalStylesheet.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ViewCustomerScreenController">
     <center>
        <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" spacing="20.0" styleClass="vbox" stylesheets="@../Resources/generalStylesheet.css" BorderPane.alignment="CENTER">
           <children>
@@ -16,25 +16,26 @@
              </Label>
              <TableView fx:id="customerTableView" prefHeight="400.0" prefWidth="960.0">
                <columns>
-                   <TableColumn fx:id="idCol" minWidth="120.0" prefWidth="120.0" text="ID" />
-                 <TableColumn fx:id="nameCol" minWidth="120.0" prefWidth="120.0" text="Name" />
-                   <TableColumn fx:id="addressCol" minWidth="120.0" prefWidth="120.0" text="Address" />
-                   <TableColumn fx:id="address2Col" minWidth="120.0" prefWidth="120.0" text="Address 2" />
-                   <TableColumn fx:id="postalCodeCol" minWidth="120.0" prefWidth="120.0" text="Postal Code" />
-                   <TableColumn fx:id="cityCol" minWidth="120.0" prefWidth="120.0" text="City" />
-                   <TableColumn fx:id="countryCol" minWidth="120.0" prefWidth="120.0" text="Country" />
-                   <TableColumn fx:id="phoneCol" minWidth="120.0" prefWidth="120.0" text="Phone" />
+                   <TableColumn fx:id="idCol" minWidth="30.00001561641693" prefWidth="39.0000137090683" text="ID" />
+                 <TableColumn fx:id="nameCol" minWidth="107.60001373291016" prefWidth="133.60001373291016" text="Name" />
+                   <TableColumn fx:id="addressCol" minWidth="120.0" prefWidth="187.0" text="Address" />
+                   <TableColumn fx:id="address2Col" minWidth="120.0" prefWidth="121.0" text="Address 2" />
+                   <TableColumn fx:id="postalCodeCol" minWidth="96.99996948242188" prefWidth="96.99996948242188" text="Postal Code" />
+                   <TableColumn fx:id="cityCol" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="City" />
+                   <TableColumn fx:id="countryCol" minWidth="120.0" prefWidth="135.0" text="Country" />
+                   <TableColumn fx:id="phoneCol" minWidth="120.0" prefWidth="133.0" text="Phone" />
                </columns>
              </TableView>
              <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="20.0">
                 <children>
-                   <Button fx:id="scheduleApptBtn" layoutX="210.0" layoutY="10.0" minHeight="30.0" mnemonicParsing="false" onAction="#onActionScheduleAppt" prefHeight="30.0" prefWidth="100.0" text="Schedule Appt">
+                   <Button fx:id="scheduleApptBtn" layoutX="210.0" layoutY="10.0" minHeight="30.0" mnemonicParsing="false" onAction="#onActionScheduleAppt" prefHeight="30.0" prefWidth="129.0" text="Schedule Appt">
                       <HBox.margin>
                          <Insets right="100.0" />
                       </HBox.margin>
                    </Button>
                    <Button fx:id="addBtn" minHeight="30.0" mnemonicParsing="false" onAction="#onActionAddCustomer" prefHeight="30.0" prefWidth="100.0" text="Add" />
                    <Button fx:id="updateBtn" layoutX="320.0" layoutY="10.0" minHeight="30.0" mnemonicParsing="false" onAction="#onActionUpdateCustomer" prefHeight="30.0" prefWidth="100.0" text="Update" />
+                  <Button fx:id="detailsBtn" minHeight="30.0" mnemonicParsing="false" onAction="#onActionDetails" prefHeight="30.0" prefWidth="100.0" text="Details" />
                    <Button fx:id="deleteBtn" layoutX="440.0" layoutY="10.0" minHeight="30.0" mnemonicParsing="false" onAction="#onActionDeleteCustomer" prefHeight="30.0" prefWidth="100.0" text="Delete" />
                    <Button fx:id="backBtn" minHeight="30.0" mnemonicParsing="false" onAction="#onActionReturn" prefHeight="30.0" prefWidth="100.0" text="Back">
                       <HBox.margin>

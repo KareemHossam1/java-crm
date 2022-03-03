@@ -78,7 +78,7 @@ public class ViewCustomerScreenController extends GeneralController implements I
     //</editor-fold>
     
     private final ObservableList<Customer> Customers = FXCollections.observableArrayList();
-    private TableView.TableViewSelectionModel<Customer> tvSelCustomer;
+    private TableView.TableViewSelectionModel<Customer> selectedCustomer;
 
     // Query the DB to repopulate table
     private void refreshTable(){
@@ -91,7 +91,7 @@ public class ViewCustomerScreenController extends GeneralController implements I
             displayErrorAlert("Error retrieving customers from database");
         }
         customerTableView.setItems(Customers);
-        tvSelCustomer = customerTableView.getSelectionModel();
+        selectedCustomer = customerTableView.getSelectionModel();
     }
     
     private void selectionError(){
@@ -121,13 +121,27 @@ public class ViewCustomerScreenController extends GeneralController implements I
     // Schedule appointment for selected customer
     @FXML
     void onActionScheduleAppt(ActionEvent event) {
-        if(tvSelCustomer.isEmpty())
+        if(selectedCustomer.isEmpty())
             selectionError();
         else{
-            Customer.setCurrentCustomer(tvSelCustomer.getSelectedItem());
+            Customer.setCurrentCustomer(selectedCustomer.getSelectedItem());
             displayScreen(event, "/View/AddAppointmentScreen.fxml");
         }
     }
+    //*****************
+    @FXML
+    void onActionDetails(ActionEvent event){
+        if(selectedCustomer.isEmpty())
+            selectionError();
+        else{
+            Customer.setCurrentCustomer(selectedCustomer.getSelectedItem());
+            displayScreen(event, "/View/detailsScreen.fxml");
+        }
+
+
+    }
+
+
     
     // Add a new customer
     @FXML
@@ -138,11 +152,11 @@ public class ViewCustomerScreenController extends GeneralController implements I
     // Update an existing customer
     @FXML
     void onActionUpdateCustomer(ActionEvent event) {
-        if(tvSelCustomer.isEmpty()){
+        if(selectedCustomer.isEmpty()){
             selectionError();
         }
         else{
-            Customer.setCurrentCustomer(tvSelCustomer.getSelectedItem());
+            Customer.setCurrentCustomer(selectedCustomer.getSelectedItem());
             displayScreen(event, "/View/UpdateCustomerScreen.fxml");
         }
     }
@@ -150,7 +164,7 @@ public class ViewCustomerScreenController extends GeneralController implements I
     // Delete selected customer
     @FXML
     void onActionDeleteCustomer(ActionEvent event) {
-        if(tvSelCustomer.isEmpty()){
+        if(selectedCustomer.isEmpty()){
             selectionError();
         }
         else{
@@ -159,7 +173,7 @@ public class ViewCustomerScreenController extends GeneralController implements I
                 .filter(res -> res == ButtonType.YES) // Using lambda to create specific event handling if user clicks YES. Not going to reuse this elsewhere.
                 .ifPresent(res -> {
                     try {
-                        CustomerDaoImpl.deleteCustomer(tvSelCustomer.getSelectedItem().getCustomerId());
+                        CustomerDaoImpl.deleteCustomer(selectedCustomer.getSelectedItem().getCustomerId());
                         Customer.setCurrentCustomer(null);
                         displayNotification(event, "Customer deleted");
                         refreshTable();

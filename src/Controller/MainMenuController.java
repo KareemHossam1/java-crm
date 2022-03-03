@@ -38,6 +38,7 @@ public class MainMenuController extends GeneralController {
     @FXML
     void onActionDisplayCustomers(ActionEvent event) {
        displayScreen(event, "/View/ViewCustomerScreen.fxml");
+
     }
 
     @FXML

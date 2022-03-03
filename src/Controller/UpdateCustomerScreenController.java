@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller;
-
 import DAO.AddressDaoImpl;
 import DAO.CityDaoImpl;
 import DAO.CountryDaoImpl;
@@ -22,20 +16,13 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-/**
- * Controls logic for updating customer
- *
- * @author Austin Wong
- */
 public class UpdateCustomerScreenController extends GeneralController implements Initializable {
 
-    		
     //<editor-fold defaultstate="collapsed" desc="ui-variables">
     
     @FXML
@@ -53,10 +40,10 @@ public class UpdateCustomerScreenController extends GeneralController implements
     @FXML
     private TextField phoneTxt;
     @FXML
-    private Button saveBtn;
-    @FXML
-    private Button backBtn;
-    @FXML
+    //private Button saveBtn;
+    //@FXML
+    //private Button backBtn;
+    //@FXML
     private Label errorLbl;
     
     //</editor-fold>
