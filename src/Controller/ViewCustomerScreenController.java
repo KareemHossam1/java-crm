@@ -18,7 +18,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -40,9 +39,6 @@ public class ViewCustomerScreenController extends GeneralController implements I
     private TableColumn<?, ?> addressCol;
 
     @FXML
-    private Button updateBtn;
-
-    @FXML
     private TableColumn<?, ?> cityCol;
 
     @FXML
@@ -52,15 +48,6 @@ public class ViewCustomerScreenController extends GeneralController implements I
     private TableColumn<?, ?> postalCodeCol;
 
     @FXML
-    private Button scheduleApptBtn;
-    
-    @FXML
-    private Button addBtn;
-
-    @FXML
-    private Button deleteBtn;
-
-    @FXML
     private TableColumn<?, ?> countryCol;
 
     @FXML
@@ -68,9 +55,6 @@ public class ViewCustomerScreenController extends GeneralController implements I
 
     @FXML
     private TableColumn<?, ?> nameCol;
-
-    @FXML
-    private Button backBtn;
 
     @FXML
     private TableColumn<?, ?> address2Col;
@@ -103,7 +87,6 @@ public class ViewCustomerScreenController extends GeneralController implements I
         
         //Set this as return screen
         lastScreen = AppScreen.VIEWCUSTOMERSCREEN;
-        
         //Populate Table
         idCol.setCellValueFactory(new PropertyValueFactory<>("customerId"));
         nameCol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
@@ -128,7 +111,10 @@ public class ViewCustomerScreenController extends GeneralController implements I
             displayScreen(event, "/View/AddAppointmentScreen.fxml");
         }
     }
-    //*****************
+
+    //******************************************************************************************************************
+    //******************************************************************************************************************
+    //******************************************************************************************************************
     @FXML
     void onActionDetails(ActionEvent event){
         if(selectedCustomer.isEmpty())
@@ -137,12 +123,11 @@ public class ViewCustomerScreenController extends GeneralController implements I
             Customer.setCurrentCustomer(selectedCustomer.getSelectedItem());
             displayScreen(event, "/View/detailsScreen.fxml");
         }
-
-
     }
+    //******************************************************************************************************************
+    //******************************************************************************************************************
+    //******************************************************************************************************************
 
-
-    
     // Add a new customer
     @FXML
     void onActionAddCustomer(ActionEvent event) {

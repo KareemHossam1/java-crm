@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" styleClass="border-pane" stylesheets="@../Resources/generalStylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginScreenController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" styleClass="border-pane" stylesheets="@../Resources/generalStylesheet.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginScreenController">
    <center>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" spacing="20.0" styleClass="vbox" stylesheets="@../Resources/generalStylesheet.css" BorderPane.alignment="CENTER">
          <children>
@@ -26,7 +26,7 @@
             </PasswordField>
             <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="20.0">
                <children>
-                  <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#onActionLogin" prefWidth="60.0" text="Log In" />
+                  <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#onActionLogin" prefHeight="23.0" prefWidth="73.0" text="Log In" />
                   <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#onActionExit" prefWidth="60.0" text="Exit" />
                </children>
             </HBox>

@@ -40,10 +40,7 @@ public class UpdateCustomerScreenController extends GeneralController implements
     @FXML
     private TextField phoneTxt;
     @FXML
-    //private Button saveBtn;
-    //@FXML
-    //private Button backBtn;
-    //@FXML
+
     private Label errorLbl;
     
     //</editor-fold>
