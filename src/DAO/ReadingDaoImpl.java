@@ -13,8 +13,8 @@ import static DAO.DBQuery.setPreparedStatement;
 
 public class ReadingDaoImpl {
 
-    public static ObservableList<Float> getReadings(int meterID) throws SQLException {
-        ObservableList<Float> allReadings = FXCollections.observableArrayList();
+    public static ObservableList<Reading> getReadings(int meterID) throws SQLException {
+        ObservableList<Reading> allReadings = FXCollections.observableArrayList();
         String query = "SELECT * FROM reading WHERE meterID = ? ORDER by meterID";
         PreparedStatement ps = setPreparedStatement(query);
         ps.setInt(1, meterID);
@@ -28,7 +28,7 @@ public class ReadingDaoImpl {
             String timestamp = result.getString("time_stamp");
 
             Reading readingResult = new Reading(readingID, reading, metersID, timestamp);
-            allReadings.add(readingResult.getReading());
+            allReadings.add(readingResult);
         }
         return allReadings;
     }

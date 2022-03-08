@@ -14,4 +14,24 @@ public class Meter {
     public String getMeterSerial(){
         return meterSerial;
     }
+
+    public int getMeterID() {
+        return meterID;
+    }
+
+    public void setMeterID(int meterID) {
+        this.meterID = meterID;
+    }
+
+    public void setMeterSerial(String meterSerial) {
+        this.meterSerial = meterSerial;
+    }
+
+    public int getCustomerID() {
+        return customerID;
+    }
+
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
+    }
 }

@@ -32,13 +32,11 @@
             </HBox>
             <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="262.0" prefWidth="620.0" spacing="50.0">
                <children>
-                  <ListView fx:id="list" prefHeight="242.0" prefWidth="161.0" />
+                  <ListView fx:id="metersList" prefHeight="242.0" prefWidth="161.0" />
                   <TableView fx:id="readingsTable" prefHeight="242.0" prefWidth="385.0">
                     <columns>
-                      <TableColumn fx:id="IDCol" prefWidth="40.400022864341736" text="ID" />
-                      <TableColumn fx:id="readingCol" prefWidth="120.00000762939453" text="Reading" />
-                        <TableColumn fx:id="timestampCol" prefWidth="122.39996337890625" text="Timestamp" />
-                        <TableColumn fx:id="meterIDCol" prefWidth="102.19998168945312" text="Meter ID" />
+                      <TableColumn fx:id="readingCol" editable="false" prefWidth="165.79999387264252" text="Reading" />
+                        <TableColumn fx:id="timestampCol" editable="false" prefWidth="219.80001831054688" text="Timestamp" />
                     </columns>
                   </TableView>
                </children>
