@@ -58,17 +58,25 @@ public class ViewCustomerScreenController extends GeneralController implements I
 
     @FXML
     private TableColumn<?, ?> address2Col;
-    
+    private int customerNumber;
     //</editor-fold>
     
     private final ObservableList<Customer> Customers = FXCollections.observableArrayList();
     private TableView.TableViewSelectionModel<Customer> selectedCustomer;
 
     // Query the DB to repopulate table
-    private void refreshTable(){
+    private void refreshTable(String mode){
+        switch (mode) {
+            case "F" :
+                customerNumber += 1000;
+                break;
+            case "B" :
+                customerNumber -= 1000;
+                break;
+        }
         Customers.clear();
         try{
-            Customers.addAll(CustomerDaoImpl.getAllActiveCustomers());
+            Customers.addAll(CustomerDaoImpl.getAllCustomers(customerNumber));
         }
         catch(SQLException e){
             Logger.getLogger("errorlog.txt").log(Level.WARNING,null,e);
@@ -77,14 +85,28 @@ public class ViewCustomerScreenController extends GeneralController implements I
         customerTableView.setItems(Customers);
         selectedCustomer = customerTableView.getSelectionModel();
     }
-    
+    // Overload
+    private void refreshTable(){
+        customerNumber += 1000;
+        Customers.clear();
+        try{
+            Customers.addAll(CustomerDaoImpl.getAllCustomers(customerNumber));
+        }
+        catch(SQLException e){
+            Logger.getLogger("errorlog.txt").log(Level.WARNING,null,e);
+            displayErrorAlert("Error retrieving customers from database");
+        }
+        customerTableView.setItems(Customers);
+        selectedCustomer = customerTableView.getSelectionModel();
+    }
+
     private void selectionError(){
         displayErrorAlert("Select a customer first");
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        customerNumber = 0;
         //Set this as return screen
         lastScreen = AppScreen.VIEWCUSTOMERSCREEN;
         //Populate Table
@@ -96,6 +118,25 @@ public class ViewCustomerScreenController extends GeneralController implements I
         cityCol.setCellValueFactory(new PropertyValueFactory<>("city"));
         countryCol.setCellValueFactory(new PropertyValueFactory<>("country"));
         phoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        refreshTable();
+    }
+
+    @FXML
+    void customersForward(){
+        refreshTable("F");
+    }
+    @FXML
+    void customersBack(){
+        refreshTable("B");
+    }
+    @FXML
+    void firstCustomers(){
+        customerNumber =0;
+        refreshTable();
+    }
+    @FXML
+    void lastCustomers() throws SQLException {
+        customerNumber = CustomerDaoImpl.getLastID() - 1000;
         refreshTable();
     }
     
@@ -161,6 +202,7 @@ public class ViewCustomerScreenController extends GeneralController implements I
                         CustomerDaoImpl.deleteCustomer(selectedCustomer.getSelectedItem().getCustomerId());
                         Customer.setCurrentCustomer(null);
                         displayNotification(event, "Customer deleted");
+                        customerNumber = 0;
                         refreshTable();
                     }
                     catch (SQLException e) {

@@ -14,16 +14,24 @@
                    <Font name="System Bold" size="20.0" />
                 </font>
              </Label>
+            <ButtonBar prefHeight="40.0" prefWidth="200.0">
+              <buttons>
+                <Button mnemonicParsing="false" onAction="#firstCustomers" text="⏮" />
+                  <Button mnemonicParsing="false" onAction="#customersBack" text="◀" />
+                  <Button mnemonicParsing="false" onAction="#customersForward" text="▶" />
+                  <Button mnemonicParsing="false" onAction="#lastCustomers" text="⏭" />
+              </buttons>
+            </ButtonBar>
              <TableView fx:id="customerTableView" prefHeight="400.0" prefWidth="960.0">
                <columns>
-                   <TableColumn fx:id="idCol" minWidth="30.00001561641693" prefWidth="39.0000137090683" text="ID" />
-                 <TableColumn fx:id="nameCol" minWidth="107.60001373291016" prefWidth="133.60001373291016" text="Name" />
-                   <TableColumn fx:id="addressCol" minWidth="120.0" prefWidth="187.0" text="Address" />
-                   <TableColumn fx:id="address2Col" minWidth="120.0" prefWidth="121.0" text="Address 2" />
-                   <TableColumn fx:id="postalCodeCol" minWidth="96.99996948242188" prefWidth="96.99996948242188" text="Postal Code" />
+                   <TableColumn fx:id="idCol" minWidth="30.00001561641693" prefWidth="75.19997823238373" text="ID" />
+                 <TableColumn fx:id="nameCol" minWidth="98.40003967285156" prefWidth="139.2000274658203" text="Name" />
+                   <TableColumn fx:id="addressCol" minWidth="120.0" prefWidth="147.20001220703125" text="Address" />
+                   <TableColumn fx:id="address2Col" minWidth="120.0" prefWidth="136.60000610351562" text="Address 2" />
+                   <TableColumn fx:id="postalCodeCol" minWidth="82.59994506835938" prefWidth="82.59994506835938" text="Postal Code" />
                    <TableColumn fx:id="cityCol" maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="City" />
-                   <TableColumn fx:id="countryCol" minWidth="120.0" prefWidth="135.0" text="Country" />
-                   <TableColumn fx:id="phoneCol" minWidth="120.0" prefWidth="133.0" text="Phone" />
+                   <TableColumn fx:id="countryCol" minWidth="118.20001220703125" prefWidth="118.20001220703125" text="Country" />
+                   <TableColumn fx:id="phoneCol" minWidth="120.0" prefWidth="161.20001220703125" text="Phone" />
                </columns>
              </TableView>
              <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="20.0">

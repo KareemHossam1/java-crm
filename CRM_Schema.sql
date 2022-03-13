@@ -24,8 +24,8 @@ DROP TABLE IF EXISTS `address`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `address` (
   `addressId` int NOT NULL AUTO_INCREMENT,
-  `addressName` varchar(20) DEFAULT NULL,
-  `address2Name` varchar(20) DEFAULT NULL,
+  `addressName` varchar(50) DEFAULT NULL,
+  `address2Name` varchar(50) DEFAULT NULL,
   `cityId` int DEFAULT NULL,
   `postalCode` varchar(20) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
@@ -59,7 +59,7 @@ CREATE TABLE `appointment` (
   `customerId` int DEFAULT NULL,
   `userId` int DEFAULT NULL,
   `title` varchar(20) DEFAULT NULL,
-  `description` varchar(20) DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL,
   `location` varchar(20) DEFAULT NULL,
   `contact` varchar(20) DEFAULT NULL,
   `type` varchar(20) DEFAULT NULL,
@@ -149,7 +149,7 @@ DROP TABLE IF EXISTS `customer`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `customer` (
   `customerId` int NOT NULL AUTO_INCREMENT,
-  `customerName` varchar(20) DEFAULT NULL,
+  `customerName` varchar(50) DEFAULT NULL,
   `addressId` int DEFAULT NULL,
   `active` tinyint(1) DEFAULT NULL,
   `createDate` varchar(40) DEFAULT NULL,

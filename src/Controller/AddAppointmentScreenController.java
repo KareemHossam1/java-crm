@@ -28,7 +28,7 @@ import javafx.scene.control.TextField;
 import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static DAO.CustomerDaoImpl.getAllActiveCustomers;
+import static DAO.CustomerDaoImpl.getAllCustomers;
 import java.time.LocalTime;
 import javafx.event.Event;
 import javafx.scene.input.KeyCode;
@@ -117,7 +117,7 @@ public class AddAppointmentScreenController extends GeneralController implements
         
         // Populate Customer ComboBox
         try{
-            customerComboBox.setItems(getAllActiveCustomers());
+            customerComboBox.setItems(getAllCustomers());
         }
         catch(SQLException e){
             handleSQLException(e);

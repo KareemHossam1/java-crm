@@ -22,7 +22,7 @@ public class DBConnection {
     // JDBC URL parts
     private static final String protocol = "jdbc";
     private static final String vendorName = ":mysql:";
-    private static final String ipAddress = "//localhost:3306/crm";
+    private static final String ipAddress = "//localhost:3306/meters_crm";
     
     // JDBC URL
     private static final String jdbcURL = protocol + vendorName + ipAddress;

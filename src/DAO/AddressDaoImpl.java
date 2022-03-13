@@ -25,7 +25,7 @@ public class AddressDaoImpl extends GeneralDaoImpl {
     public static Address getAddress(int addressId) throws SQLException  {
         
         Address addressResult;
-        String sqlStatement = "SELECT * FROM address WHERE addressId = ?";
+        String sqlStatement = "SELECT * FROM address WHERE addressID = ?";
         PreparedStatement ps = setPreparedStatement(sqlStatement);
         ps.setInt(1, addressId);
         ps.execute();
@@ -34,7 +34,7 @@ public class AddressDaoImpl extends GeneralDaoImpl {
         while(rs.next()){
             String address = rs.getString("addressName");
             String address2 = rs.getString("address2Name");
-            int cityId = rs.getInt("cityId");
+            int cityId = rs.getInt("cityID");
             String postalCode = rs.getString("postalCode");
             String phone = rs.getString("phone");
             getMetadata(rs);

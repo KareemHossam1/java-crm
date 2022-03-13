@@ -30,7 +30,7 @@ import static Utilities.TimeFiles.localDateTimeToUITime;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static DAO.CustomerDaoImpl.getAllActiveCustomers;
+import static DAO.CustomerDaoImpl.getAllCustomers;
 import java.time.LocalTime;
 import javafx.event.Event;
 import javafx.scene.input.KeyCode;
@@ -118,7 +118,7 @@ public class UpdateAppointmentScreenController extends GeneralController impleme
         int customerId = appt.getCustomerId();
         Customer customer;
         try{
-            customerComboBox.setItems(getAllActiveCustomers());
+            customerComboBox.setItems(getAllCustomers());
             customer = CustomerDaoImpl.getCustomer(customerId);
             customerComboBox.setValue(customer);
         }

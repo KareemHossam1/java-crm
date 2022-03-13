@@ -24,11 +24,11 @@ public class GeneralDaoImpl {
     protected static LocalDateTime lastUpdateLdt;
     
     protected static void getMetadata(ResultSet rs) throws SQLException {
-        createDate = rs.getString("createDate");
-        createdBy = rs.getString("createdBy");
-        lastUpdate = rs.getString("lastUpdate");
-        lastUpdateBy = rs.getString("lastUpdateBy");
-        createDateLdt = dbStrToLocalDateTime(createDate);
-        lastUpdateLdt = dbStrToLocalDateTime(lastUpdate);
+        //createDate = rs.getString("createDate");
+        //createdBy = rs.getString("createdBy");
+        //lastUpdate = rs.getString("lastUpdate");
+        //lastUpdateBy = rs.getString("lastUpdateBy");
+        //createDateLdt = dbStrToLocalDateTime(createDate);
+        //lastUpdateLdt = dbStrToLocalDateTime(lastUpdate);
     }    
 }

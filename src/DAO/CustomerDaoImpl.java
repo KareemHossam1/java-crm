@@ -69,11 +69,13 @@ public class CustomerDaoImpl extends GeneralDaoImpl{
     }
     
     // Get a list of all active customers
-    public static ObservableList<Customer> getAllActiveCustomers() throws SQLException {
+    public static ObservableList<Customer> getAllCustomers(int customersNumber) throws SQLException {
         ObservableList<Customer> allCustomers=FXCollections.observableArrayList();
-        
-        String selectStatement="SELECT * FROM customer WHERE active = true ORDER by customerId";
+
+        String selectStatement="SELECT * FROM customer WHERE customerId > ? and customerId <= ? ORDER by customerId";
         PreparedStatement ps = setPreparedStatement(selectStatement);
+        ps.setInt (1, customersNumber-1000);
+        ps.setInt (2, customersNumber);
         ps.execute();
         ResultSet rs = ps.getResultSet();
         
@@ -88,6 +90,40 @@ public class CustomerDaoImpl extends GeneralDaoImpl{
             allCustomers.add(customerResult);
         }
         
+        return allCustomers;
+    }
+
+    public static int getLastID() throws SQLException{
+        String selectStatement="select customerId from customer ORDER BY customerId DESC LIMIT 1";
+        PreparedStatement ps = setPreparedStatement(selectStatement);
+        ps.execute();
+        ResultSet rs = ps.getResultSet();
+        int lastID =0;
+        while (rs.next()){
+            lastID = rs.getInt("customerId");
+        }
+        return lastID;
+    }
+
+    public static ObservableList<Customer> getAllCustomers() throws SQLException {
+        ObservableList<Customer> allCustomers=FXCollections.observableArrayList();
+
+        String selectStatement="SELECT * FROM customer ORDER by customerId";
+        PreparedStatement ps = setPreparedStatement(selectStatement);
+        ps.execute();
+        ResultSet rs = ps.getResultSet();
+
+        while(rs.next()){
+            int customerId = rs.getInt("customerId");
+            String customerName = rs.getString("customerName");
+            int addressId = rs.getInt("addressId");
+            Boolean active = rs.getBoolean("active");
+            getMetadata(rs);
+            Customer customerResult = new Customer(customerId, customerName, addressId, active, createDateLdt, createdBy, lastUpdateLdt, lastUpdateBy);
+            customerResult.setAddressObj();
+            allCustomers.add(customerResult);
+        }
+
         return allCustomers;
     }
     
