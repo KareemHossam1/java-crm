@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Controller;
-
 import DAO.CustomerDaoImpl;
 import Model.Customer;
 import java.net.URL;
@@ -17,10 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
@@ -58,6 +54,9 @@ public class ViewCustomerScreenController extends GeneralController implements I
 
     @FXML
     private TableColumn<?, ?> address2Col;
+
+    @FXML
+    private TextField searchBar;
     private int customerNumber;
     //</editor-fold>
     
@@ -119,6 +118,11 @@ public class ViewCustomerScreenController extends GeneralController implements I
         countryCol.setCellValueFactory(new PropertyValueFactory<>("country"));
         phoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
         refreshTable();
+
+        searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
+
+
+        });
     }
 
     @FXML

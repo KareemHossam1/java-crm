@@ -126,6 +126,26 @@ public class CustomerDaoImpl extends GeneralDaoImpl{
 
         return allCustomers;
     }
+
+    public static ObservableList<Customer> searchAllCustomers(String searchName) throws SQLException {
+        ObservableList<Customer> allCustomers = FXCollections.observableArrayList();
+        String selectStatement="SELECT * FROM user WHERE userName LIKE '?%' ORDER BY customerName";
+        PreparedStatement ps = setPreparedStatement(selectStatement);
+        ps.setString(1,searchName);
+        ps.execute();
+        ResultSet rs = ps.getResultSet();
+
+        while(rs.next()){
+            int customerId = rs.getInt("customerId");
+            String customerName = rs.getString("customerName");
+            int addressId = rs.getInt("addressId");
+            Boolean active = rs.getBoolean("active");
+            Customer customerResult = new Customer(customerId, customerName, addressId, active, createDateLdt, createdBy, lastUpdateLdt, lastUpdateBy);
+            customerResult.setAddressObj();
+            allCustomers.add(customerResult);
+        }
+        return allCustomers;
+    }
     
     //</editor-fold>
     

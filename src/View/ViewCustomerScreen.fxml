@@ -14,14 +14,15 @@
                    <Font name="System Bold" size="20.0" />
                 </font>
              </Label>
-            <ButtonBar prefHeight="40.0" prefWidth="200.0">
-              <buttons>
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+               <children>
+                  <TextField fx:id="searchBar" prefHeight="23.0" prefWidth="297.0" />
                 <Button mnemonicParsing="false" onAction="#firstCustomers" text="⏮" />
                   <Button mnemonicParsing="false" onAction="#customersBack" text="◀" />
                   <Button mnemonicParsing="false" onAction="#customersForward" text="▶" />
-                  <Button mnemonicParsing="false" onAction="#lastCustomers" text="⏭" />
-              </buttons>
-            </ButtonBar>
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="33.0" mnemonicParsing="false" onAction="#lastCustomers" prefHeight="23.0" prefWidth="33.0" text="⏭" />
+               </children>
+            </HBox>
              <TableView fx:id="customerTableView" prefHeight="400.0" prefWidth="960.0">
                <columns>
                    <TableColumn fx:id="idCol" minWidth="30.00001561641693" prefWidth="75.19997823238373" text="ID" />
